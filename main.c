@@ -38,7 +38,7 @@ void showMenu()
 bool INSERTst(sqlite3 *db);
 bool INSERTmark(sqlite3 *db);
 
-bool flag = false;
+bool flagStudent = false;
 
 static int callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
@@ -156,11 +156,13 @@ bool INSERTmark(sqlite3 *db) //also demonstrates transaction inserting
         sqlite3_free(err_msg);
     }
     
-    if (!flag)
+    if (!flagStudent)
     {
         printf("There is no such student!");
         return 0;
     }
+    
+    flagStudent = false;
     
     printf("Insert subject:");
     scanf("%s", subject);
